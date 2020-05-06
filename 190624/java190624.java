@@ -8,21 +8,26 @@ public class java190624 {
     }
 
     public static int[] solution(int[] input) {
+        
+        int length = input.length;
+        
         int[] frontElemnets = new int[input.length];
         int[] backElemnets = new int[input.length];
         int[] output = new int[input.length];
 
-        frontElemnets[0] = 1;
-        for(int i = 1; i<input.length; ++i){
-            frontElemnets[i] = frontElemnets[i-1] * input[i-1];
+        int temp = 1;
+        for(int i = 0; i<length; ++i){
+            frontElemnets[i] = temp;
+            temp *= input[i];
         }
 
-        backElemnets[input.length-1] = 1;
-        for(int j=input.length-2; j>=0; --j){
-            backElemnets[j] = backElemnets[j+1] * input[j+1];
+        temp = 1;
+        for(int j=length-1; j>=0; --j){
+            backElemnets[j] = temp;
+            temp *= input[j];
         }
 
-        for(int k=0; k<input.length; ++k){
+        for(int k=0; k<length; ++k){
             output[k] = frontElemnets[k] * backElemnets[k];
         }
 
