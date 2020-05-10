@@ -33,6 +33,7 @@ public class java190715 {
         System.out.println(solution(input3, 1));
     }
 
+    // 수정 필요
     public static Node solution(Node head, int n) {
         if (head == null)
             return null;

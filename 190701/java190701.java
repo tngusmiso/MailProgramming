@@ -8,6 +8,7 @@ class java190701{
         System.out.println(solution(new int[]{-5, -3, 1}, 3));
     }
 
+    // 수정필요
     public static int solution(int[] arr, int N) {
         Arrays.sort(arr);
         return arr[arr.length-N];
