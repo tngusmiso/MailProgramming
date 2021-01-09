@@ -27,3 +27,33 @@ func solution(_ number: String, _ k:Int) -> String {
     let answer = numArr.reduce(""){"\($0)\($1)"}
     return answer
 }
+
+// Stack을 이용한 방법 (*수정 필요*)
+func solution2(_ number: String, _ k:Int) -> String {
+    var numArr: [Character] = number.map { $0 }
+    var stack: [Character] = []
+    var count: Int = 0
+    var i: Int = 0
+    
+    while count < k && i < numArr.count {
+        guard let last = stack.last else {
+            stack.append(numArr[i])
+            i += 1
+            continue
+        }
+        if last < numArr[i] {
+            stack.removeLast()
+            count += 1
+            continue
+        }
+        stack.append(numArr[i])
+        i += 1
+    }
+    
+    if i < numArr.count {
+        stack.append(contentsOf: numArr[i...])
+    }
+    
+    let answer = stack.reduce(""){"\($0)\($1)"}
+    return answer
+}
